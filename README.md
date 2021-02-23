@@ -14,7 +14,7 @@ npm run dev		//development mode
 npm run start //production mode
 ```
 
-**issue**: The production mode needs some config mentioned [below][npm-start].
+**issue**: The production mode needs some config mentioned [below][#npm-start].
 
 #### Deploy to GitHub Pages
 
@@ -22,7 +22,7 @@ npm run start //production mode
 
 2. Set the remote origin to github repository.
 
-3. open `next.config.js` to configure your own urls.
+3. Open `next.config.js` to configure your own urls.
 
    ```javascript
    const prod = process.env.NODE_ENV === "production";
@@ -47,19 +47,21 @@ npm run start //production mode
 
    - **basePath**: if your github repository's name is "[github-user-name].github.io", then just comment this line. Or replace '/blog-starter' with '/[github-repository-name]'.
 
-     [npm-start]: If `basePath` is custom defined, when you run `npm run start`, you should open [http://localhost:3000/[github-repository-name]]() to see the result, or you will see 404 error.
+     <a name="npm-start"></a>If `basePath` is custom defined, when you run `npm run start`, you should open [http://localhost:3000/[github-repository-name]]() to see the result, or you will see 404 error.
 
    - **images**: `next export` doesn't support the [`next/image`](https://nextjs.org/docs/api-reference/next/image) component's default loader, see [this](https://nextjs.org/docs/advanced-features/static-html-export#caveats). So we need to configure other [loader](https://nextjs.org/docs/basic-features/image-optimization#loader). Replace the link of `path` with your own.
 
    - **env**: replace the link with your own. This [enviroment variables](https://nextjs.org/docs/api-reference/next.config.js/environment-variables) is used somewhere in code. 
 
-4. run the following command.
+4. Run the following command.
 
    ```shell
    npm run deploy
    ```
 
-4. 
+5. Change github repository **Settings**. Navigate to **GitHub Pages**, set the **Source** to be branch **"gh-pages"**, directory **/(root)**, and click **Save**.
+
+6. Wait from a while and click your gh-page link to test the result!
 
 
 
