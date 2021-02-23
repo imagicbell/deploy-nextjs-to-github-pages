@@ -29,13 +29,13 @@ npm run start //production mode
    
    module.exports = prod ? 
    {
-     basePath: '/blog-starter',		//define your own, see below explanation.
+     basePath: '/deploy-nextjs-to-github-pages',		//define your own, see below explanation.
      images: {
        loader: 'imgix',
-       path: 'https://imagicbell.github.io/blog-starter/',			//define your own, see below explanation.
+       path: 'https://imagicbell.github.io/deploy-nextjs-to-github-pages/',			//define your own, see below explanation.
      },
      env: {
-       baseUrl: 'https://imagicbell.github.io/blog-starter',		//define your own, see below explanation.
+       baseUrl: 'https://imagicbell.github.io/deploy-nextjs-to-github-pages',		//define your own, see below explanation.
      }
    } :
    {
@@ -45,7 +45,7 @@ npm run start //production mode
    }
    ```
 
-   - **basePath**: if your github repository's name is "[github-user-name].github.io", then just comment this line. Or replace '/blog-starter' with your '/[github-repository-name]'.
+   - **basePath**: if your github repository's name is "[github-user-name].github.io", then just comment this line. Or replace '/deploy-nextjs-to-github-pages' with your '/[github-repository-name]'.
 
      <a name="npm-start"></a>If `basePath` is custom defined, when you run `npm run start`, you should open [http://localhost:3000/[github-repository-name]]() to see the result, or you will see 404 error.
 
