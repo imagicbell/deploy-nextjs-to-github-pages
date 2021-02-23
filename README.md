@@ -62,17 +62,3 @@ npm run start //production mode
 5. Change github repository **Settings**. Navigate to **GitHub Pages**, set the **Source** to be branch **"gh-pages"**, directory **/(root)**, and click **Save**.
 
 6. Wait from a while and click your gh-page link to test the result!
-
-
-
-
-
-
-
-
-
-
-
-
-
-[npm-start]:
