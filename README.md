@@ -14,7 +14,7 @@ npm run dev		//development mode
 npm run start //production mode
 ```
 
-**issue**: The production mode needs some config mentioned [below][#npm-start].
+**issue**: The production mode needs some config mentioned [below](#npm-start).
 
 #### Deploy to GitHub Pages
 
