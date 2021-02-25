@@ -81,12 +81,11 @@ npm run start //production mode
   If you use `Image` component from `next/image` to load image, then everything is ok.
 
   But if you use html `img` tag, there are 2 work-around ways:
-
   1. Set the `src` of `img` tag as:
   
      ```html
-   <img src={`${process.env.basePath}${relative-path-of-image-source}`} />
+         <img src={`${process.env.basePath}${relative-path-of-image-source}`} />
      ```
-  where `process.env.basePath` is defined in `next.config.js`, see [here](#next-env).
+     where `process.env.basePath` is defined in `next.config.js`, see [here](#next-env).
   
   2. Move the image assets to the sub-path. If the images are under `public` directory, then create a sub-directory named with the `basePath` and move the images under this directory.
