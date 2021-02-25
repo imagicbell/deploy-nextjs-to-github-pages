@@ -26,32 +26,35 @@ npm run start //production mode
 
    ```javascript
    const prod = process.env.NODE_ENV === "production";
+   const basePath = "/deploy-nextjs-to-github-pages";    // set with "" if the application is deployed directly under the domain with no sub-path
    
    module.exports = prod ? 
    {
-     basePath: '/deploy-nextjs-to-github-pages',		//define your own, see below explanation.
+     basePath: basePath,
      images: {
        loader: 'imgix',
-       path: 'https://imagicbell.github.io/deploy-nextjs-to-github-pages/',			//define your own, see below explanation.
+       path: basePath,       //change it incase the images are hosted on other CDNs instead of under 'public' directory
      },
      env: {
-       baseUrl: 'https://imagicbell.github.io/deploy-nextjs-to-github-pages',		//define your own, see below explanation.
+       basePath: basePath
      }
-   } :
+   } : 
    {
      env: {
-       baseUrl: ''
+       basePath: ''
      }
-   }
+   };
    ```
 
-   - **basePath**: if your github repository's name is "[github-user-name].github.io", then just comment this line. Or replace '/deploy-nextjs-to-github-pages' with your '/[github-repository-name]'.
+   - **const basePath**: if your github repository's name is [[github-user-name].github.io](), then just set `const basePath = ""`. Or replace `/deploy-nextjs-to-github-pages` with your `/[github-repository-name]`. Because Github Pages deploy the repository named with  [[github-user-name].github.io]() directly under the domain.
 
-     <a name="npm-start"></a>If `basePath` is custom defined, when you run `npm run start`, you should open [http://localhost:3000/[github-repository-name]]() to see the result, or you will see 404 error.
+     <a name="npm-start"></a>If `basePath` is given a sub-path, when you run `npm run start`, you should open [http://localhost:3000/[github-repository-name]]() to see the result, or you will see 404 error.
 
-   - **images**: `next export` doesn't support the [`next/image`](https://nextjs.org/docs/api-reference/next/image) component's default loader, see [this](https://nextjs.org/docs/advanced-features/static-html-export#caveats). So we need to configure other [loader](https://nextjs.org/docs/basic-features/image-optimization#loader). Replace the link of `path` with your own.
+   - **images**: `next export` doesn't support the [`next/image`](https://nextjs.org/docs/api-reference/next/image) component's default loader, see [this](https://nextjs.org/docs/advanced-features/static-html-export#caveats). So we need to configure other [loader](https://nextjs.org/docs/basic-features/image-optimization#loader). 
 
-   - <a name="next-env"></a>**env**: replace the link with your own. This [enviroment variables](https://nextjs.org/docs/api-reference/next.config.js/environment-variables) is used somewhere in code. 
+     *If your images are hosted on other CDNs, not under `public` directory, then you should set the `images.path` with the corresponding CDN link.*
+
+   - <a name="next-env"></a>**env**: This [enviroment variables](https://nextjs.org/docs/api-reference/next.config.js/environment-variables) is used somewhere in code, mainly for dealing with the sub-path issue.
 
 4. Run the following command.
 
@@ -77,11 +80,13 @@ npm run start //production mode
 
   If you use `Image` component from `next/image` to load image, then everything is ok.
 
-  But if you use html `img` tag, then the `src` should be set as:
+  But if you use html `img` tag, there are 2 work-around ways:
 
-  ```html
-  <img src={`${process.env.baseUrl}${relative-path-of-image-source}`} />
-  ```
-
-  where `process.env.baseUrl` is defined in `next.config.js`, see [here](#next-env).
-
+  1. Set the `src` of `img` tag as:
+  
+     ```html
+   <img src={`${process.env.basePath}${relative-path-of-image-source}`} />
+     ```
+  where `process.env.basePath` is defined in `next.config.js`, see [here](#next-env).
+  
+  2. Move the image assets to the sub-path. If the images are under `public` directory, then create a sub-directory named with the `basePath` and move the images under this directory.

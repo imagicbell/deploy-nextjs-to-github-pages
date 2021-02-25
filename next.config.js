@@ -1,18 +1,19 @@
 const prod = process.env.NODE_ENV === "production";
+const basePath = "/deploy-nextjs-to-github-pages";    // set with "" if the application is deployed directly under the domain with no sub-path
 
 module.exports = prod ? 
 {
-  basePath: '/deploy-nextjs-to-github-pages',
+  basePath: basePath,
   images: {
     loader: 'imgix',
-    path: 'https://imagicbell.github.io/deploy-nextjs-to-github-pages/',
+    path: basePath,       //change it incase the images are hosted on other CDNs instead of under 'public' directory
   },
   env: {
-    baseUrl: 'https://imagicbell.github.io/deploy-nextjs-to-github-pages',
+    basePath: basePath
   }
-} :
+} : 
 {
   env: {
-    baseUrl: ''
+    basePath: ''
   }
-}
+};
