@@ -33,7 +33,7 @@ npm run start //production mode
      basePath: basePath,
      images: {
        loader: 'imgix',
-       path: basePath,       //change it incase the images are hosted on other CDNs instead of under 'public' directory
+       path: `https://imagicbell.github.io${basePath}`,       //if images are hosted on other CDNs instead of public folder, please change the root path
      },
      env: {
        basePath: basePath
